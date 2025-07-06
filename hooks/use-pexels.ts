@@ -7,7 +7,7 @@ const usePexels = (initial: string) => {
   const [query, setQuery] = useState<string>(initial)
   const [photos, setPhotos] = useState<PhotosWithTotalResults>();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<unknown>();
+  const [error, setError] = useState<string | unknown>();
   const [url, setUrl] = useState("")
 
   useEffect(() => {
@@ -28,19 +28,19 @@ const usePexels = (initial: string) => {
           console.log("(Logged from use-pexels.ts)", res, query);
           setPhotos(res);
         }
-      } catch (e: unknown) {
+      } catch (e: unknown | string) {
       if (e instanceof Error) {
         // Now 'e' is known to be an Error object, you can access properties like 'e.message'
-        setError(e.message)
-        console.error("Caught an Error: ", e.message);
+        setError(e.message);
+        console.error("Caught an Error:", e.message);
       } else if (typeof e === 'string') {
         // Handle cases where a string was thrown
-        setError(e)
-        console.error("Caught a string error: ", e);
+        setError(e);
+        console.error("Caught a string error:", e);
       } else {
         // Handle other unexpected types
-        setError(e)
-        console.error("Caught an unknown error: ", e);
+        setError(e);
+        console.error("Caught an unknown error:", e);
       }
     }
       finally {

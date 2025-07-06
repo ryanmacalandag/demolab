@@ -40,6 +40,8 @@ export default function PexelsGrid({
                     width={100}
                     height={50}
                     className="w-12 md:w-16"
+                    blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII="
+                    unoptimized
                   />
                 </div>
                 <div className="overlay-gradient absolute z-30 w-full h-1/3 bottom-0 left-0 bg-gradient-to-t from-black/60 to-transparent"></div>

@@ -17,6 +17,10 @@ module.exports = {
         pathname: "/photos/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
     ],
     formats: ['image/avif', 'image/webp'],
   },
