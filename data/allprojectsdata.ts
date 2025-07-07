@@ -32,6 +32,9 @@ export type ProjectType = {
   category: CategoryOptionType[];
   techstack: string[];
   icon?: LucideIcon;
+  featured?: boolean;
+  link?: string;
+  imgurl?: string;
 }
 
 export const allprojectsdata: ProjectType[] = [
@@ -42,6 +45,7 @@ export const allprojectsdata: ProjectType[] = [
     category: [ "Design System" ],
     techstack: [ "Tailwind" ],
     icon: Paintbrush,
+    featured: true,
   },
   {
     title: "Pexels API Photo Gallery ",
