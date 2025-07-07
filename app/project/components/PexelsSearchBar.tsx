@@ -28,8 +28,9 @@ export default function PexelsSearchBar({
         >
           <input
             name="search"
+            aria-label="search"
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value.toLowerCase())}
             placeholder="Search for free photos on Pexels"
             className="w-full px-3 py-3 md:py-5 border-0 placeholder:text-foreground/40 transition"
           />
