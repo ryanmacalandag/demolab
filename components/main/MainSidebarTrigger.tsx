@@ -2,14 +2,21 @@
 
 import { SidebarTrigger, useSidebar } from "../ui/sidebar";
 import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
-import { PanelLeftCloseIcon, PanelLeftOpenIcon } from "lucide-react";
+import { MenuIcon, PanelLeftCloseIcon } from "lucide-react";
+
+interface MainSidebarTrigger
+  extends React.ComponentProps<typeof SidebarTrigger> {
+  iconOpenClass: string;
+  iconCloseClass: string;
+}
 
 export default function MainSidebarTrigger({
+  iconOpenClass,
+  iconCloseClass,
   className,
   onClick,
   ...props
-}: React.ComponentProps<typeof SidebarTrigger>) {
+}: MainSidebarTrigger) {
   const { toggleSidebar, state } = useSidebar();
 
   return (
@@ -18,15 +25,15 @@ export default function MainSidebarTrigger({
       data-slot="sidebar-trigger"
       variant="default"
       size="icon"
-      className={cn("rounded-none", className)}
+      className={`rounded-none ${className}`}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();
       }}
       {...props}
     >
-      {(state === "collapsed" && <PanelLeftOpenIcon className="size-5" />) || (
-        <PanelLeftCloseIcon className="size-5" />
+      {(state === "collapsed" && <MenuIcon className={iconCloseClass} />) || (
+        <PanelLeftCloseIcon className={iconOpenClass} />
       )}
 
       <span className="sr-only">Toggle Sidebar</span>

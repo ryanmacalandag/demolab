@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectWrapper from "./ui/ProjectWrapper";
-import CreditCard from "./ui/CreditCard";
+import CreditCard from "./CreditCard";
 
 export default function CreditCardStack() {
   return (

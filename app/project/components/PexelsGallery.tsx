@@ -3,9 +3,9 @@
 import React from "react";
 import ProjectWrapper from "./ui/ProjectWrapper";
 import usePexels from "@/hooks/use-pexels";
-import PexelsGrid from "./ui/PexelsGrid";
+import PexelsGrid from "./PexelsGrid";
 import { LoaderCircleIcon } from "lucide-react";
-import PexelsSearchBar from "./ui/PexelsSearchBar";
+import PexelsSearchBar from "./PexelsSearchBar";
 import SectionHeader from "@/components/sections/SectionHeader";
 
 export default function PexelsGallery() {
