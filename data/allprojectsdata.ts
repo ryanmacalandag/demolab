@@ -3,7 +3,7 @@ import CreditCardStack from "@/app/project/components/CreditCardStack";
 import InfiniteScroll from "@/app/project/components/InfiniteScroll";
 import PexelsGallery from "@/app/project/components/PexelsGallery";
 import TailwindColorChart from "@/app/project/components/TailwindColorChart";
-import { CreditCard, GalleryHorizontalEnd, LayersIcon, LayoutDashboard, LucideIcon, Paintbrush, } from "lucide-react";
+import { GalleryHorizontalEnd, LayersIcon, LayoutDashboard, LucideIcon, Paintbrush, } from "lucide-react";
 import React from "react";
 
 export type CategoryOptionType =  "App Idea" | "UI Component" | "Feature" | "Design System" | "API" | "Dev Tools";

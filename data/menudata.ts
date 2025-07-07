@@ -1,4 +1,4 @@
-import { BookOpen, LucideIcon, Map, Paintbrush, Puzzle, Sparkles } from "lucide-react";
+import { BookOpen, LucideIcon, Map, Paintbrush, Sparkles } from "lucide-react";
 
 export type SecondaryMenuType = {
   name: string;
@@ -20,6 +20,20 @@ export const primarymenulist: PrimaryMenuType[] = [
     name: "Projects",
     icon: Sparkles,
     isActive: false,
+    submenuitems: [
+      {
+        name: "All Projects",
+        url: "/project"
+      },
+      {
+        name: "Featured",
+        url: "/project/featured"
+      },
+      {
+        name: "Categories",
+        url: "/project/categories"
+      },
+    ],
   },
   {
     name: "Design Systems",
@@ -60,10 +74,6 @@ export const primarymenulist: PrimaryMenuType[] = [
         url: "#"
       },
     ],
-  },
-  {
-    name: "Collaborations",
-    icon: Puzzle,
   },
   {
     name: "Roadmap",
