@@ -6,8 +6,8 @@ import { CircleXIcon, MenuIcon } from "lucide-react";
 
 interface MainSidebarTrigger
   extends React.ComponentProps<typeof SidebarTrigger> {
-  iconOpenClass: string;
-  iconCloseClass: string;
+  iconOpenClass?: string;
+  iconCloseClass?: string;
 }
 
 export default function MainSidebarTrigger({
