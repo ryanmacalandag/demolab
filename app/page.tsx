@@ -15,10 +15,10 @@ function HomePage() {
           <div className="hero-left col-span-12 md:col-span-6 lg:col-span-7 xl:col-span-8 px-4 sm:px-8 lg:px-12 pt-6 sm:pt-8 lg:pt-12 pb-10 sm:pb-10 lg:pb-14">
             <div className="flex flex-col gap-4">
               <Badge>Home</Badge>
-              <h1 className="scroll-m-20 text-4xl md:text-3xl lg:text-5xl font-bold">
+              <h1 className="scroll-m-20 w-full max-w-[600px] text-4xl md:text-3xl lg:text-5xl font-bold">
                 An isolated corner to explore freely
               </h1>
-              <p className="text-muted-foreground text-base sm:text-base lg:text-xl my-2 sm:my-4 ">
+              <p className="max-w-[600px] text-muted-foreground text-base sm:text-base lg:text-xl my-2 sm:my-3 ">
                 Tucked away from the usual trappings of the everyday normal
                 life, I escape here to freely experiment, explore and expand my
                 creative horizon.
@@ -32,7 +32,7 @@ function HomePage() {
                 alt="hero image"
                 width={800}
                 height={800}
-                className="absolute md:absolute z-10 top-0 left-0 w-full h-full md:h-full object-cover object-top-left px-10 md:pt-10"
+                className="absolute md:absolute z-10 top-0 left-0 w-full h-full md:h-full object-cover object-top-left px-10 md:pt-4"
               />
               <div className="hero-character-floaters">
                 <Image
