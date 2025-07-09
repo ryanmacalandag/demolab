@@ -6,10 +6,10 @@ import TailwindColorChart from "@/app/project/components/TailwindColorChart";
 import { GalleryHorizontalEnd, LayersIcon, LayoutDashboard, LucideIcon, Paintbrush, } from "lucide-react";
 import React from "react";
 
-export type CategoryOptionType =  "App Idea" | "UI Component" | "Feature" | "Design System" | "API" | "Dev Tools";
+export type CategoryOptionType =  "App Idea" | "Component" | "Feature" | "Design System" | "API" | "Dev Tools";
 
 export const allcategories: CategoryOptionType[] = [
-  "App Idea", "UI Component", "Feature", "Design System", "API", "Dev Tools",
+  "App Idea", "Component", "Feature", "Design System", "API", "Dev Tools",
 ]
 
 export type CategoryType = {
@@ -29,7 +29,7 @@ export type ProjectType = {
   title: string;
   description: string;
   contentfc: React.FC;
-  category: CategoryOptionType[];
+  category: CategoryOptionType;
   techstack: string[];
   icon?: LucideIcon;
   featured?: boolean;
@@ -42,7 +42,7 @@ export const allprojectsdata: ProjectType[] = [
     title: "Tailwind Color Chart",
     description: "All color options in Tailwind 4.0.",
     contentfc: TailwindColorChart,
-    category: [ "Design System" ],
+    category: "Design System",
     techstack: [ "Tailwind" ],
     icon: Paintbrush,
     featured: true,
@@ -51,7 +51,7 @@ export const allprojectsdata: ProjectType[] = [
     title: "Pexels API Photo Gallery ",
     description: "Get images from Pexels and display in a gallery",
     contentfc: PexelsGallery,
-    category: [ "API", "UI Component" ],
+    category: "Component",
     techstack: [ "Pexels", "Tailwind" ],
     icon: LayoutDashboard,
   },
@@ -59,7 +59,7 @@ export const allprojectsdata: ProjectType[] = [
     title: "Realistic Credit Cards Stacks",
     description: "Playing around with card stacks UI.",
     contentfc: CreditCardStack,
-    category: [ "UI Component" ],
+    category: "Component",
     techstack: [ "Tailwind" ],
     icon: LayersIcon,
   },
@@ -67,7 +67,7 @@ export const allprojectsdata: ProjectType[] = [
     title: "Infinite Scroll using Tailwind",
     description: "Infinite scrolls offer a cool way to display images, logos, or test on landing pages.",
     contentfc: InfiniteScroll,
-    category: [ "UI Component" ],
+    category: "Component",
     techstack: [ "Tailwind" ],
     icon: GalleryHorizontalEnd,
   },

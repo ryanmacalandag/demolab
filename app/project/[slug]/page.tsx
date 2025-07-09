@@ -32,8 +32,8 @@ export default async function ProjectPage({
   const { slug } = await params;
 
   const project = allprojectsdata.find((proj) => Slugify(proj.title) === slug);
-  const similarprojects = allprojectsdata.filter((proj) =>
-    project?.category.map((cat) => proj.category.map((c) => cat === c))
+  const similarprojects = allprojectsdata.filter(
+    (proj) => project?.category === proj.category
   );
   return (
     <MainWrapper>
@@ -55,12 +55,11 @@ export default async function ProjectPage({
             </BreadcrumbList>
           </ContentBreadCrumb>
           <div className="flex gap-1">
-            {project &&
-              project.category.map((cat) => (
-                <Badge variant="default" className="mt-4 mb-2" key={cat}>
-                  {cat}
-                </Badge>
-              ))}
+            {project && (
+              <Badge variant="default" className="mt-4 mb-2">
+                {project.category}
+              </Badge>
+            )}
           </div>
           <h2 className="scroll-m-20 text-3xl md:text-3xl lg:text-5xl font-extrabold text-balance ">
             {project && project.title}

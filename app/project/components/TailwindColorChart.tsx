@@ -1,8 +1,8 @@
 "use client";
 
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { ReactNode } from "react";
 import ProjectWrapper from "./ui/ProjectWrapper";
-import { ClipboardCopyIcon, CopyCheckIcon, XIcon } from "lucide-react";
+import { CopyCheckIcon, CopyIcon, XIcon } from "lucide-react";
 import { toast } from "sonner";
 // import { convert, OKLCH, sRGB } from "@texel/color";
 
@@ -15,27 +15,13 @@ export function ColorBox({
   children: ReactNode;
   title: string;
 }) {
-  const colorBoxRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (colorBoxRef.current) {
-      const computedStyle = window.getComputedStyle(colorBoxRef.current);
-      const backgroundColor = computedStyle.backgroundColor;
-      console.log("Computed Background Color: ", backgroundColor);
-    }
-  }, []);
-
-  function handleCopyRGB({
-    colorBoxRef,
-  }: {
-    colorBoxRef: React.RefObject<HTMLButtonElement | null>;
-  }) {
-    const computedStyle = colorBoxRef.current
-      ? window.getComputedStyle(colorBoxRef.current)
-      : null;
-    const backgroundColor =
-      computedStyle?.backgroundColor || "oklch(0.442 0.017 285.786)";
+  const handleCopyRGB = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const backgroundColor = window.getComputedStyle(
+      e.currentTarget
+    )?.backgroundColor;
     navigator.clipboard.writeText(backgroundColor);
+
     toast.custom((t) => (
       <div className="group/toast relative flex gap-3 items-center border-0 rounded-lg pl-4 pr-10 py-3 text-sm overflow-hidden">
         <div className="opacity-50 group-hover/toast:opacity-100">
@@ -56,20 +42,19 @@ export function ColorBox({
         <div className="absolute -z-15 top-0 left-0 w-full h-full bg-background"></div>
       </div>
     ));
-  }
+  };
 
   return (
     <button
       className={`color-box group/color relative col-span-2 flex flex-col justify-end items-center text-mono text-xxs text-foreground/50 aspect-video lg:aspect-portrait rounded overflow-hidden hover:ring ${className}`}
       title={title}
-      ref={colorBoxRef}
-      onClick={() => handleCopyRGB({ colorBoxRef })}
+      onClick={handleCopyRGB}
     >
       <p className="w-full bg-background/90 px-2 py-1 text-nowrap whitespace-nowrap">
         {children}
       </p>
       <span className="absolute top-0 right-0 p-2 bg-foreground opacity-0 text-background group-hover/color:opacity-100 transition">
-        <ClipboardCopyIcon size={16} />
+        <CopyIcon size={16} />
       </span>
     </button>
   );
