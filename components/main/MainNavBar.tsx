@@ -21,9 +21,9 @@ function MainNavBar() {
         </Link>
       </div>
       <div className="main-navbar-secondary flex items-center gap-2 px-0 sm:px-4 py-3">
-        <Button size="sm" variant="ghost">
+        <Button className="bg-foreground/5 text-foreground hover:text-white/90">
           <GitForkIcon />
-          Github
+          Gihub
         </Button>
         <ModeToggle />
       </div>
