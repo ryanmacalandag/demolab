@@ -3,8 +3,6 @@ import ContentBlockWrapper from "@/components/main/ContentBlockWrapper";
 import ContentBreadCrumb from "@/components/main/ContentBreadCrumb";
 import MainWrapper from "@/components/main/MainWrapper";
 import { BrowseSimilarProjects } from "@/components/sections/BrowseSimilarProjects";
-import { Badge } from "@/components/ui/badge";
-import BadgeLink from "@/components/ui/BadgeLink";
 import {
   BreadcrumbItem,
   BreadcrumbLink,
@@ -15,6 +13,7 @@ import { allprojectsdata } from "@/data/allprojectsdata";
 import { Slugify } from "@/util/Slugify";
 import { HomeIcon } from "lucide-react";
 import React from "react";
+import { ProjectTitleGroup } from "../components/ui/ProjectWrapper";
 
 // Unexisting project slugs will get 404
 export const dynamicParams = false;
@@ -52,22 +51,7 @@ export default async function ProjectPage({
               <BreadcrumbItem>{project?.title}</BreadcrumbItem>
             </BreadcrumbList>
           </ContentBreadCrumb>
-          <div className="flex gap-1">
-            {project && (
-              <BadgeLink
-                href={`/projects/category/${Slugify(project.category)}`}
-                className="mt-4 mb-2"
-              >
-                {project.category}
-              </BadgeLink>
-            )}
-          </div>
-          <h2 className="scroll-m-20 text-3xl md:text-3xl lg:text-5xl font-extrabold text-balance ">
-            {project && project.title}
-          </h2>
-          <p className="text-muted-foreground text-balance text-lg sm:text-xl my-2 sm:my-4 ">
-            {project && project.description}
-          </p>
+          {project && <ProjectTitleGroup project={project} />}
         </ContentBlockHeader>
         {project && <project.contentfc />}
         <BrowseSimilarProjects projects={similarprojects} />
