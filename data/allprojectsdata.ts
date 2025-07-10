@@ -1,15 +1,15 @@
 
-import CreditCardStack from "@/app/project/components/CreditCardStack";
-import InfiniteScroll from "@/app/project/components/InfiniteScroll";
-import PexelsGallery from "@/app/project/components/PexelsGallery";
-import TailwindColorChart from "@/app/project/components/TailwindColorChart";
+import CreditCardStack from "@/app/projects/components/CreditCardStack";
+import InfiniteScroll from "@/app/projects/components/InfiniteScroll";
+import PexelsGallery from "@/app/projects/components/PexelsGallery";
+import TailwindColorChart from "@/app/projects/components/TailwindColorChart";
 import { GalleryHorizontalEnd, LayersIcon, LayoutDashboard, LucideIcon, Paintbrush, } from "lucide-react";
 import React from "react";
 
-export type CategoryOptionType =  "App Idea" | "Component" | "Feature" | "Design System" | "API" | "Dev Tools";
+export type CategoryOptionType =  "App Feature" | "Component" | "Feature" | "UI Library" | "API" | "Dev Tools";
 
 export const allcategories: CategoryOptionType[] = [
-  "App Idea", "Component", "Feature", "Design System", "API", "Dev Tools",
+  "App Feature", "Component", "Feature", "UI Library", "API", "Dev Tools",
 ]
 
 export type CategoryType = {
@@ -42,7 +42,7 @@ export const allprojectsdata: ProjectType[] = [
     title: "Tailwind Color Chart",
     description: "All color options in Tailwind 4.0.",
     contentfc: TailwindColorChart,
-    category: "Design System",
+    category: "UI Library",
     techstack: [ "Tailwind" ],
     icon: Paintbrush,
     featured: true,
@@ -51,7 +51,7 @@ export const allprojectsdata: ProjectType[] = [
     title: "Pexels API Photo Gallery ",
     description: "Get images from Pexels and display in a gallery",
     contentfc: PexelsGallery,
-    category: "Component",
+    category: "API",
     techstack: [ "Pexels", "Tailwind" ],
     icon: LayoutDashboard,
   },

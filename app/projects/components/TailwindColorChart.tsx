@@ -4,7 +4,6 @@ import React, { ReactNode } from "react";
 import ProjectWrapper from "./ui/ProjectWrapper";
 import { CopyCheckIcon, CopyIcon, XIcon } from "lucide-react";
 import { toast } from "sonner";
-// import { convert, OKLCH, sRGB } from "@texel/color";
 
 export function ColorBox({
   className,
@@ -35,6 +34,7 @@ export function ColorBox({
         <button
           onClick={() => toast.dismiss(t)}
           className="absolute top-2 right-2 opacity-40 hover:opacity-100"
+          lang="en"
         >
           <XIcon size={12} />
         </button>

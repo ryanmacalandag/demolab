@@ -24,32 +24,32 @@ const usePexels = (initial: string) => {
               Accept: "application/json",
               Authorization: pexelskey,
             }
-          }).then((r) => r.json());
-          console.log("(Logged from use-pexels.ts)", res, query);
-          setPhotos(res);
+          }).then((r) => (r.json())).catch(e => setError(e.message));
+          setPhotos(res)
         }
       } catch (e: unknown | string) {
-      if (e instanceof Error) {
-        // Now 'e' is known to be an Error object, you can access properties like 'e.message'
-        setError(e.message);
-        console.error("Caught an Error:", e.message);
-      } else if (typeof e === 'string') {
-        // Handle cases where a string was thrown
-        setError(e);
-        console.error("Caught a string error:", e);
-      } else {
-        // Handle other unexpected types
-        setError(e);
-        console.error("Caught an unknown error:", e);
+        if (e instanceof Error) {
+          // Now 'e' is known to be an Error object, you can access properties like 'e.message'
+          setError(e.message);
+          console.error("Caught an Error:", e.message);
+        } else if (typeof e === 'string') {
+          // Handle cases where a string was thrown
+          setError(e);
+          console.error("Caught a string error:", e);
+        } else {
+          // Handle other unexpected types
+          setError(e);
+          console.error("Caught an unknown error:", e);
+        }
       }
-    }
       finally {
         setLoading(false);
       }
     }
     fetchphotos();
   }, [query, url]);
-
+  
+  console.log("(Logged from use-pexels.ts)", typeof photos, query, error);
   return { photos, loading, error, query, setQuery };
 };
 

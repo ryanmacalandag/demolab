@@ -36,7 +36,7 @@ export function BrowseProjects({ projects }: { projects: ProjectType[] }) {
             </CardContent>
             <CardFooter className="mt-auto">
               <CardAction>
-                <Link href={`/project/${Slugify(project.title)}`}>
+                <Link href={`/projects/${Slugify(project.title)}`}>
                   <Button
                     variant="default"
                     className="dark-group-hover/card:text-foreground group-hover/card:bg-primary group-hover/card:-translate-y-1 dark-group-hover/card:border-t dark-group-hover/card:border-foreground/70 flex gap-1 has-[>svg]:pr-4 rounded bg-foreground uppercase text-xs text-background group-hover:text-pink-50 justify-self-end"

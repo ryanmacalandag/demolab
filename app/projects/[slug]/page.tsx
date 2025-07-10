@@ -4,6 +4,7 @@ import ContentBreadCrumb from "@/components/main/ContentBreadCrumb";
 import MainWrapper from "@/components/main/MainWrapper";
 import { BrowseSimilarProjects } from "@/components/sections/BrowseSimilarProjects";
 import { Badge } from "@/components/ui/badge";
+import BadgeLink from "@/components/ui/BadgeLink";
 import {
   BreadcrumbItem,
   BreadcrumbLink,
@@ -12,6 +13,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { allprojectsdata } from "@/data/allprojectsdata";
 import { Slugify } from "@/util/Slugify";
+import { HomeIcon } from "lucide-react";
 import React from "react";
 
 // Unexisting project slugs will get 404
@@ -43,22 +45,21 @@ export default async function ProjectPage({
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink href="/" className="flex">
-                  Home
+                  <HomeIcon size={14} />
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/components">
-                  {project?.title}
-                </BreadcrumbLink>
-              </BreadcrumbItem>
+              <BreadcrumbItem>{project?.title}</BreadcrumbItem>
             </BreadcrumbList>
           </ContentBreadCrumb>
           <div className="flex gap-1">
             {project && (
-              <Badge variant="default" className="mt-4 mb-2">
+              <BadgeLink
+                href={`/projects/category/${Slugify(project.category)}`}
+                className="mt-4 mb-2"
+              >
                 {project.category}
-              </Badge>
+              </BadgeLink>
             )}
           </div>
           <h2 className="scroll-m-20 text-3xl md:text-3xl lg:text-5xl font-extrabold text-balance ">
