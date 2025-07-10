@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fira_Code, Inter, Silkscreen } from "next/font/google";
+import { Fira_Code, Inter, Italiana, Silkscreen } from "next/font/google";
 import "./globals.css";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
@@ -23,6 +23,12 @@ const bytesized = Silkscreen({
   subsets: ["latin"],
 });
 
+const italiana = Italiana({
+  variable: "--font-italiana",
+  weight: "400",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "DemoLab by Ryan Macalandag",
   description: "A kitchen sink of ideas, trials and cool stuff.",
@@ -36,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${bytesized.variable} ${fira_code.variable} antialiased`}
+        className={`${inter.variable} ${bytesized.variable} ${fira_code.variable} ${italiana.variable} antialiased`}
       >
         <AppWrapper>
           <SidebarProvider defaultOpen={false}>
