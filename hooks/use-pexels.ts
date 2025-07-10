@@ -10,32 +10,45 @@ const usePexels = (initial: string) => {
   const [error, setError] = useState<string | unknown>();
   const [url, setUrl] = useState("")
 
+  
   useEffect(() => {
     async function fetchphotos() {
+      // Filter empty string; fetch "curated" photos instead
+      if (query === "") {
+        setUrl(`https://api.pexels.com/v1/curated?page=1&per_page=25`);
+      } else { 
+        setUrl(`https://api.pexels.com/v1/search?query=${query}`);
+      }
+      console.log("URL:", url)
+
+      // Clear error
+      setError("");
+      
       try {
-        const pexelskey = process.env.NEXT_PUBLIC_PEXELS_API_KEY_DEV;
-        if (query === "") {
-          setUrl(`https://api.pexels.com/v1/curated?page=1&per_page=20`)
-        } else setUrl(`https://api.pexels.com/v1/search?query=${query}`);
-        if (pexelskey != undefined) {
-          const res: PhotosWithTotalResults = await fetch(url, {
+        // Get API key from .env file
+        const PexelsAPIKEY = process.env.NEXT_PUBLIC_PEXELS_API_KEY_DEV;
+        
+
+        if (PexelsAPIKEY != undefined) {
+          const res: Response = await fetch(url, {
             method: "GET",
             headers: {
               Accept: "application/json",
-              Authorization: pexelskey,
+              Authorization: PexelsAPIKEY,
             }
-          }).then((r) => (r.json())).catch(e => setError(e.message));
-          setPhotos(res)
+          });
+          const photoset = await res.json();
+          setPhotos(photoset)
         }
       } catch (e: unknown | string) {
         if (e instanceof Error) {
           // Now 'e' is known to be an Error object, you can access properties like 'e.message'
           setError(e.message);
-          console.error("Caught an Error:", e.message);
+          console.error("Caught an instanceof Error:", e.message);
         } else if (typeof e === 'string') {
           // Handle cases where a string was thrown
           setError(e);
-          console.error("Caught a string error:", e);
+          console.error("Caught a typeof string error:", e);
         } else {
           // Handle other unexpected types
           setError(e);
@@ -49,7 +62,7 @@ const usePexels = (initial: string) => {
     fetchphotos();
   }, [query, url]);
   
-  console.log("(Logged from use-pexels.ts)", typeof photos, query, error);
+  console.log("(Logged from use-pexels.ts)", typeof photos, query, error, url);
   return { photos, loading, error, query, setQuery };
 };
 

@@ -96,8 +96,6 @@ export function PexelsGrid({
                     width={100}
                     height={50}
                     className="w-12 md:w-16"
-                    blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII="
-                    unoptimized
                   />
                 </div>
                 <div className="overlay-gradient absolute z-30 w-full h-1/3 bottom-0 left-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -110,6 +108,8 @@ export function PexelsGrid({
                 className="pexel-photo w-full h-full object-cover group-hover/item:scale-105 transition"
                 loading="lazy"
                 sizes="(max-width: 768px) 100vw, 33vw"
+                blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII="
+                unoptimized
               />
             </a>
           );
@@ -131,7 +131,7 @@ export default function PexelsGallery() {
       </SectionHeader>
       <PexelsSearchBar setQuery={setQuery} />
       {!photos ||
-        (photos.total_results === undefined && <p>No photos found.</p>) ||
+        (photos.total_results < 0 && <p>No photos found.</p>) ||
         (loading && (
           <p className="pexels-gallery-loader flex items-center flex-nowrap bg-foreground/3 px-4 sm:px-8 lg:px-12 py-6 sm:py-12">
             <LoaderCircleIcon className="animate-spin" /> Loading...
