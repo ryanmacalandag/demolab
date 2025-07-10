@@ -53,6 +53,7 @@
   --tracking-widest: .2rem;
   --default-transition-duration: .3s;
   --animate-infinite-scroll-h: 50s linear alternate infinite infinite-scroll-h;
+  --animate-infinite-scroll-h-alt: 60s linear alternate infinite infinite-scroll-h-alt;
   --animate-infinite-scroll-h-reverse: 50s linear alternate infinite infinite-scroll-h-reverse;
   --aspect-creditcard: 3.37/2.125;
   --aspect-portrait: 2/3;
@@ -66,9 +67,21 @@
     }
   
   }
+  @keyframes infinite-scroll-h-alt {
+    0% {
+      transform: translateX(60%);
+    }
+    20% {
+      transform: translateX(80%);
+    }
+    100% {
+      transform: translateX(-10%);
+    }
+  
+  }
   @keyframes infinite-scroll-h-reverse {
     from {
-      transform: translateX(-50%);
+      transform: translateX(-120%);
     }
     to {
       transform: translateX(0%);

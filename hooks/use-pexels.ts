@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { PhotosWithTotalResults } from "pexels";
 
-const usePexels = (initial: string) => {
+const usePexels = (initial: string, qty: number = 15) => {
   const [query, setQuery] = useState<string>(initial)
   const [photos, setPhotos] = useState<PhotosWithTotalResults>();
   const [loading, setLoading] = useState(true);
@@ -15,9 +15,9 @@ const usePexels = (initial: string) => {
     async function fetchphotos() {
       // Filter empty string; fetch "curated" photos instead
       if (query === "") {
-        setUrl(`https://api.pexels.com/v1/curated?page=1&per_page=25`);
+        setUrl(`https://api.pexels.com/v1/curated?page=1&per_page=${qty}`);
       } else { 
-        setUrl(`https://api.pexels.com/v1/search?query=${query}`);
+        setUrl(`https://api.pexels.com/v1/search?query=${query}&per_page=${qty}`);
       }
       console.log("URL:", url)
 
@@ -60,7 +60,7 @@ const usePexels = (initial: string) => {
       }
     }
     fetchphotos();
-  }, [query, url]);
+  }, [query, url, qty]);
   
   console.log("(Logged from use-pexels.ts)", typeof photos, query, error, url);
   return { photos, loading, error, query, setQuery };
