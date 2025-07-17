@@ -1,9 +1,10 @@
 
+import CostOfLivingCalculator from "@/app/projects/components/CostOfLivingCalculator";
 import CreditCardStack from "@/app/projects/components/CreditCardStack";
 import InfiniteScroll from "@/app/projects/components/InfiniteScroll";
 import PexelsGallery from "@/app/projects/components/PexelsGallery";
 import TailwindColorChart from "@/app/projects/components/TailwindColorChart";
-import { GalleryHorizontalEnd, LayersIcon, LayoutDashboard, LucideIcon, Paintbrush, } from "lucide-react";
+import { Calculator, GalleryHorizontalEnd, LayersIcon, LayoutDashboard, LucideIcon, Paintbrush, } from "lucide-react";
 import React from "react";
 
 export type CategoryOptionType =  "App Feature" | "Component" | "Feature" | "UI Library" | "API" | "Dev Tools";
@@ -70,5 +71,13 @@ export const allprojectsdata: ProjectType[] = [
     category: "Component",
     techstack: [ "Tailwind" ],
     icon: GalleryHorizontalEnd,
+  },
+  {
+    title: "Cost of Living Calculator",
+    description: "A simple calculator to estimate the cost of living in different cities.",
+    contentfc: CostOfLivingCalculator,
+    category: "Component",
+    techstack: [ "Tailwind" ],
+    icon: Calculator,
   },
 ]
